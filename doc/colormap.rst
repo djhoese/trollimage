@@ -57,9 +57,7 @@ Now applying a palette to the data, with sharp edges::
 API
 ===
 
-.. automodule:: trollimage.colormap
-   :members:
-   :undoc-members:
+See :doc:`api/trollimage.colormap`.
 
 Default Colormaps
 =================

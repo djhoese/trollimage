@@ -13,10 +13,12 @@ Contents:
    :maxdepth: 2
 
    installation
-   image
-   xrimage
-   colorspaces
    colormap
+
+.. toctree::
+   :maxdepth: 1
+
+   TrollImage API <api/modules>
 
 
 Indices and tables

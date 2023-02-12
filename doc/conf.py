@@ -54,7 +54,13 @@ for mod_name in MOCK_MODULES:
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx',
-              'sphinx.ext.napoleon']
+              'sphinx.ext.napoleon', 'sphinxcontrib.apidoc']
+
+apidoc_module_dir = "../trollimage"
+apidoc_output_dir = "api"
+apidoc_excluded_paths = [
+]
+apidoc_separate_modules = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -247,8 +253,8 @@ man_pages = [
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
-    'numpy': ('https://docs.scipy.org/doc/numpy', None),
-    'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
+    'numpy': ('https://numpy.org/doc/stable', None),
+    'scipy': ('https://docs.scipy.org/doc/scipy', None),
     'xarray': ('https://xarray.pydata.org/en/stable', None),
     'dask': ('https://dask.pydata.org/en/latest', None),
     'rasterio': ('https://rasterio.readthedocs.io/en/latest', None),

@@ -113,6 +113,8 @@ setup(name="trollimage",
       extras_require={
           'geotiff': ['rasterio>=1.0'],
           'xarray': ['xarray', 'dask[array]'],
+          'docs': ['sphinx', 'rasterio', 'xarray', 'dask[array]',
+                   'sphinx-rtd-theme', 'sphinxcontrib-apidoc'],
       },
       tests_require=['xarray', 'dask[array]', 'pyproj', 'pyresample'],
       ext_modules=EXTENSIONS,
