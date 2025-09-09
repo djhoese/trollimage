@@ -97,7 +97,9 @@ class RIOFile(object):
         self.mode = mode
         self.kwargs = kwargs
         self.rfile = None
-        self.lock = threading.Lock()
+        from dask.distributed import Lock
+        self.lock = Lock()
+        #self.lock = threading.Lock()
 
     @property
     def width(self):
@@ -122,9 +124,11 @@ class RIOFile(object):
 
     def close(self):
         """Close the file."""
-        with self.lock:
-            if not self.closed:
-                self.rfile.close()
+        if not self.closed:  # skip acquiring lock if we know we're already closed
+            with self.lock:
+                if not self.closed:  # now that we finally have the lock, don't close the file if someone else did it already
+                    self.rfile.close()
+                    self.rfile = None
 
     def __enter__(self):
         """Enter method."""
@@ -135,10 +139,10 @@ class RIOFile(object):
         """Exit method."""
         self.close()
 
-    def __del__(self):
-        """Delete the instance."""
-        with suppress(IOError, OSError):
-            self.close()
+    #def __del__(self):
+    #    """Delete the instance."""
+    #    with suppress(IOError, OSError):
+    #        self.close()
 
     @property
     def colorinterp(self):

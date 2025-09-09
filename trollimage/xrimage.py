@@ -447,6 +447,7 @@ class XRImage:
         # provide the data object and the opened file so the caller can
         # store them when they would like. Caller is responsible for
         # closing the file
+        r_file.close()  # close for distributed
         return to_store
 
     @staticmethod
